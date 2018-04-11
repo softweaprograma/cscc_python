@@ -1,1 +1,1 @@
-This is my repo for my python class and CSCC.
+This is my repo for my python class at CSCC.
