@@ -23,4 +23,4 @@ output_centimeters = output_centimeters + (input_inches * 2.54)
 output_meters = output_centimeters/100
 
 print()
-print(output_meters, " m")
+print(output_meters," m")
