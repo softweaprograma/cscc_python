@@ -9,11 +9,11 @@ import random
 random_low = 1
 random_high = 5
 guess_is_good = False
+continue_playing = False
 
-
-random_number = random.randint(random_low, random_high)
-print(random_number)
 while True:
+    random_number = random.randint(random_low, random_high)
+    print(random_number)
     try:
         user_guess = float(input("Guess a number between 1 and 5:\n"))
         for x in range(random_low, random_high):
@@ -25,6 +25,12 @@ while True:
                 print("Try your luck again.")
                 break
         if guess_is_good:
+            want_to_continue = input("Do you want to play again?\n")
+            if want_to_continue.lower() != "y" or want_to_continue != "yes":
+                continue_playing = True
+            else:
+                break
+        if not continue_playing:
             break
     except ValueError:
         print("Please Enter Valid Number only... try again")
