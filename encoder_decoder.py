@@ -8,7 +8,6 @@
 # encoding A=1,B=2,C=3,D=4,E=5,F=6,G=7,H=8,I=9,J=10,K=11,L=12,M=13,N=14,O=15,P=16,Q=17,R=18,S=19,T=20,U=21,V=22,W=23,X=24,Y=25,Z=26
 alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P","Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-
 # Define a function for decoding
 def encode(string_to_encode):
     string_to_encode = string_to_encode.upper()
@@ -17,16 +16,22 @@ def encode(string_to_encode):
 
     for character in string_to_encode:
         #print(character)
-        counter = 0
-        for letter in alpha:
-            #print(letter, character)
-            counter += 1
-            if character == letter:
-                encoded_string = encoded_string + str(counter) + '-'
-                break
-            if character == ' ':
-                encoded_string = encoded_string[:-1] + ' '
-                break
+        if character == "-":
+            encoded_string = encoded_string
+        elif character == " ":
+            encoded_string = encoded_string[:-1] + ' '
+        else:
+            counter = 0
+            special_char = True
+            for letter in alpha:
+                #print(letter, character)
+                counter += 1
+                if character == letter:
+                    encoded_string = encoded_string + str(counter) + '-'
+                    special_char = False
+                    break
+            if special_char:
+                encoded_string = encoded_string[:-1] + character + '-'
 
     return encoded_string[:-1]
 
@@ -49,9 +54,11 @@ def decode(string_to_decode):
                 counter = 0
                 for letter in alpha:
                     counter += 1
-                    if int(number) == counter:
-                        # print(letter)
-                        decoded_word = decoded_word + letter
+                    if number.isnumeric():
+                        if int(number) == counter:
+                            #print(letter)
+                            decoded_word = decoded_word + letter
+
 
             decoded_words_array[i] = decoded_word
 
@@ -62,6 +69,32 @@ def decode(string_to_decode):
     return decoded_string
 
 
-encoded_str = encode("Anthony Gimei")
+def decode_v2(string_to_decode):
+    number_to_decode = ""
+    for char in string_to_decode:
+        if str(char).isnumeric():
+            number_to_decode += char
+        elif str(char) == "-":
+            number_to_decode = number_to_decode
+
+
+
+def encode_v2(string_to_encode):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    string_to_encode = string_to_encode.lower()
+    str_len = len(string_to_encode)
+    decoded_str = ""
+    for x in string_to_encode:
+        if str(x).isalpha():
+            index = alphabet.find(x)
+            decoded_str += str(index + 1) + '-'
+        else:
+            decoded_str += x
+
+
+    return decoded_str
+
+
+encoded_str = encode_v2("How are you?")
 print(encoded_str)
-print(decode(encoded_str))
+#print(decode(encoded_str))
