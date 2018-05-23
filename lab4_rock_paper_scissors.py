@@ -1,7 +1,7 @@
 # FILE: rock_paper_scissors.py
 # NAME: Play Rock Paper Scissors
 # AUTHOR: Anthony Gimei
-# DATE: 4/24/2018
+# DATE: 5/6/2018
 # PURPOSE: Lets user play a game of Rock Paper Scissors vs Computer and displays winner
 
 import random
@@ -24,17 +24,17 @@ def play_rock_paper_scissors(user, comp):
     the_winner = ""
     if user == comp:
         the_winner = "tie"
-    if user == "1" and comp == "3":
+    elif user == "1" and comp == "3":
         the_winner = "user"
-    if user == "3" and comp == "1":
+    elif user == "3" and comp == "1":
         the_winner = "comp"
-    if user == "2" and comp == "1":
+    elif user == "2" and comp == "1":
         the_winner = "user"
-    if user == "1" and comp == "2":
+    elif user == "1" and comp == "2":
         the_winner = "comp"
-    if user == "3" and comp == "2":
+    elif user == "3" and comp == "2":
         the_winner = "user"
-    if user == "2" and comp == "3":
+    elif user == "2" and comp == "3":
         the_winner = "comp"
 
     return(the_winner)
