@@ -91,4 +91,4 @@ while continue_playing:
             print("You got", correct, "correct and", incorrect, "incorrect")
 
     except ValueError:
-        print("Please Enter input only... try again")
+        print("Please Enter valid input only... try again")
